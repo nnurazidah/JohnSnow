@@ -46,7 +46,7 @@ def load_data():
 
 @st.cache_data
 def load_area_shapefile():
-    area_gdf = gpd.read_file("cholera-deaths/polys.shp")
+    area_gdf = gpd.read_file("polys.shp")
     if area_gdf.crs != "EPSG:4326":
         area_gdf = area_gdf.to_crs("EPSG:4326")
     return area_gdf
@@ -126,4 +126,5 @@ with col1:
     st.metric("Total Death Points", len(deaths_gdf))
 with col2:
     st.metric("Total Water Pumps", len(pumps_gdf))
+
 
