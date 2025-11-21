@@ -30,8 +30,8 @@ basemap_choice = st.sidebar.selectbox(
 # ---------------- DATA LOADING ----------------
 @st.cache_data
 def load_data():
-    deaths_df = pd.read_excel("data/cholera_deaths.xlsx")
-    pumps_df = pd.read_excel("data/pumps.xlsx")
+    deaths_df = pd.read_excel("cholera_deaths.xlsx")
+    pumps_df = pd.read_excel("pumps.xlsx")
     deaths_gdf = gpd.GeoDataFrame(
         deaths_df,
         geometry=[Point(xy) for xy in zip(deaths_df["y"], deaths_df["x"])],
@@ -126,3 +126,4 @@ with col1:
     st.metric("Total Death Points", len(deaths_gdf))
 with col2:
     st.metric("Total Water Pumps", len(pumps_gdf))
+
